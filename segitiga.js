@@ -1,9 +1,14 @@
 const klasifikasiSegitiga = (a, b, c) => {
-    a = parseFloat(a);
-    b = parseFloat(b);
-    c = parseFloat(c);
+    const safeRound = (num) => {
+        const rounded = Math.round(num);
+        return Math.abs(num - rounded) <= 0.01 ? rounded : num;
+    };
 
-    if (a <= 0 || b <= 0 || c <= 0) {
+    a = safeRound(Number(a));
+    b = safeRound(Number(b));
+    c = safeRound(Number(c));
+
+    if (!Number.isInteger(a) || !Number.isInteger(b) || !Number.isInteger(c) || a <= 0 || b <= 0 || c <= 0) {
         return "Tidak ada segitiga dapat dibangun";
     }
 
